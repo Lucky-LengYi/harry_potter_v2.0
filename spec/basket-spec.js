@@ -1,6 +1,6 @@
 'use strict';
 
-var BookList = require('../src/model/book-list');
+var Basket = require('../src/model/basket');
 var list = {
   partOne: 2,
   partTwo: 3,
@@ -9,10 +9,10 @@ var list = {
   partFive: 2
 };
 
-describe('BookList', function () {
-  it('should have two attribute', function () {
-    var bookList = new BookList(list);
-    expect(bookList.listing).toEqual({
+describe('Basket', function () {
+  it('should have one attribute', function () {
+    var basket = new Basket(list);
+    expect(basket.listing).toEqual({
       partOne: 2,
       partTwo: 3,
       partThree: 4,
