@@ -1,5 +1,6 @@
 'use strict';
-var BookList = require('../src/book-list');
+
+var BookList = require('../src/model/book-list');
 var list = {
   partOne: 2,
   partTwo: 3,
