@@ -9,7 +9,7 @@ function Basket(list) {
 Basket.prototype.getGrouping = function() {
   var result = {};
   var group;
-  var list = this.listing;
+  var list = _.clone(this.listing, true);
   do {
     group = [];
     _.each(list, function(val, key) {
@@ -24,7 +24,6 @@ Basket.prototype.getGrouping = function() {
     }
   }
   while (group.length > 0);
-  console.log(this.listing);
   return result;
 }
 

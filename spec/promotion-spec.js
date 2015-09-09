@@ -12,8 +12,7 @@ var list = {
 
 describe('Promotion', function () {
   describe('#getTotalPrice()', function() {
-
-    it('should return the 51.20', function() {
+    xit('should return the 51.20', function() {
       var basket = new Basket(list);
       var promotion = new Promotion();
       var bastGrouping = promotion.getBiggestGrouping(basket.listing);
