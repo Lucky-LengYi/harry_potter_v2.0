@@ -21,16 +21,76 @@ describe('Basket', function () {
     });
   });
 
-  describe('#getGrouping()', function() {
-    it('should return the simple group', function() {
+  describe('#getGrouping()', function () {
+    it('should get the simple group', function () {
       var basket = new Basket(list);
-      expect(basket.getGrouping()).toEqual({
-        '3': [
-          [ 'partOne', 'partTwo', 'partThree' ]
+      basket.grouping();
+      expect(basket.group).toEqual({
+        3: [
+          ['partOne', 'partTwo', 'partThree']
         ],
-        '5': [
-          [ 'partOne', 'partTwo', 'partThree', 'partFour', 'partFive' ]
+        5: [
+          ['partOne', 'partTwo', 'partThree', 'partFour', 'partFive']
         ]
+      });
+    });
+
+    it('should get the simple group', function () {
+      var list = {
+        partOne: 0,
+        partTwo: 0,
+        partThree: 0,
+        partFour: 0,
+        partFive: 0
+      };
+      var basket = new Basket(list);
+      basket.grouping();
+      expect(basket.group).toEqual({});
+    });
+
+    it('group the book list', function () {
+      var list = {
+        partOne: 5,
+        partTwo: 4,
+        partThree: 3,
+        partFour: 2,
+        partFive: 1
+      };
+      var basket = new Basket(list);
+      basket.grouping();
+      expect(basket.group).toEqual({
+        1: [
+          ['partOne']
+        ],
+        2: [
+          ['partOne', 'partTwo']
+        ],
+        3: [
+          ['partOne', 'partTwo', 'partThree']
+        ],
+        4: [
+          ['partOne', 'partTwo', 'partThree', 'partFour']
+        ],
+        5: [
+          ['partOne', 'partTwo', 'partThree', 'partFour', 'partFive']
+        ]
+      });
+    });
+  });
+
+
+  describe('#getBestGrouping()', function () {
+    describe('change the group to best discount group', function () {
+      xit('should return the best discount group', function () {
+        var basket = new Basket(list);
+        basket.grouping();
+        basket.getBestGrouping();
+        expect(basket.group).toEqual({
+          4: [
+            ['partOne', 'partTwo', 'partThree', 'partFour'],
+            ['partOne', 'partTwo', 'partThree', 'partFive']
+          ]
+        });
       });
     });
   });
