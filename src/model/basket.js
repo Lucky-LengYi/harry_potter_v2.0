@@ -8,24 +8,23 @@ function Basket(list) {
 }
 
 Basket.prototype.grouping = function() {
-  var result = {};
-  var group;
   var list = _.clone(this.listing, true);
   do {
-    group = [];
+    var set = [];
+
     _.each(list, function(val, key) {
       if (val > 0) {
-        group.push(key);
+        set.push(key);
         list[key]--;
       }
     });
-    if (group.length !== 0) {
-      result[group.length] = result[group.length] || [];
-      result[group.length].push(group);
+
+    if (set.length !== 0) {
+      this.group[set.length] = this.group[set.length] || [];
+      this.group[set.length].push(set);
     }
   }
-  while (group.length > 0);
-  this.group = result;
+  while (set.length > 0);
 };
 
 Basket.prototype.getBestGrouping = function() {
@@ -34,11 +33,10 @@ Basket.prototype.getBestGrouping = function() {
   while (isExist && this.group[3].length > 0 && this.group[5].length > 0) {
     var groupsThree = this.group[3].shift()
     var groupsFive = this.group[5].shift()
+    var diff = _.difference(groupsFive, groupsThree);
 
     var firstGroupFour = _.clone(groupsThree, true);
     var secondGroupFour = _.clone(groupsThree, true);
-
-    var diff = _.difference(groupsFive, groupsThree);
 
     firstGroupFour.push(diff.shift());
     secondGroupFour.push(diff.shift());
@@ -46,7 +44,6 @@ Basket.prototype.getBestGrouping = function() {
     this.group[4] = this.group[4] || [];
     this.group[4].push(firstGroupFour, secondGroupFour)
   }
-
   this.deleteUselessElement();
 };
 
