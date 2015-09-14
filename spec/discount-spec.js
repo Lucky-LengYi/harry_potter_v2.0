@@ -7,7 +7,7 @@ describe('Discount', function () {
     it('should return the 0', function () {
       var basket = {};
       var discount = new Discount();
-      var result = discount.getTotalPrice(basket);
+      var result = discount.getDiscountPrice(basket);
       expect(result).toBe(0);
     });
 
@@ -19,8 +19,8 @@ describe('Discount', function () {
         ]
       };
       var discount = new Discount();
-      var result = discount.getTotalPrice(basket);
-      expect(result).toBe(51.20);
+      var result = discount.getDiscountPrice(basket);
+      expect(result).toBe(12.8);
     });
   })
 });
