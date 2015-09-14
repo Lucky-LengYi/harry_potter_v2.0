@@ -26,13 +26,13 @@ Basket.prototype.grouping = function () {
   }
   while (group.length > 0);
   this.group = result;
-}
+};
 
 Basket.prototype.getBestGrouping = function () {
   // while (this.group[3].length > 0 && this.group[5].length > 0)
   //   {
   //     //TODO: need some function
   //   }
-}
+};
 
 module.exports = Basket;

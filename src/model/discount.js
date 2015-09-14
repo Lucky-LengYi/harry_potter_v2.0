@@ -13,11 +13,11 @@ function Discount() {
   this.price = 8
 }
 
-Discount.prototype.getTotalPrice = function(group) {
+Discount.prototype.getDiscountPrice = function(group) {
   var totalPrice = 0;
   var that = this;
   _.each(group, function(val, count) {
-    totalPrice += val.length * count * that.price * (1 - that.discount[count]);
+    totalPrice += val.length * count * that.price * that.discount[count];
   });
 
   return totalPrice;
