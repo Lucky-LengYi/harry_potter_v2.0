@@ -86,12 +86,10 @@ describe('Basket', function () {
         basket.grouping();
         basket.getBestGrouping();
         expect(basket.group).toEqual({
-          3: [],
           4: [
             ['partOne', 'partTwo', 'partThree', 'partFour'],
             ['partOne', 'partTwo', 'partThree', 'partFive']
-          ],
-          5: [],
+          ]
         });
       });
     });

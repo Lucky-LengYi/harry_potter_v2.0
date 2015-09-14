@@ -47,8 +47,18 @@ Basket.prototype.getBestGrouping = function () {
       this.group[4] = this.group[4] || [];
       this.group[4].push(firstGroupFour,secondGroupFour)
     }
+
+  this.deleteUselessElement();
 };
 
+Basket.prototype.deleteUselessElement = function () {
+  var that = this;
+  _.each(this.group, function (val, key) {
+    if (val.length === 0) {
+      delete that.group[key]
+    }
+  });
+};
 
 /* test
 */
