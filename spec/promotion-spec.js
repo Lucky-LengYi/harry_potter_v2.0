@@ -1,13 +1,13 @@
 'use strict';
 
-var Discount = require('../src/model/discount');
+var Promotion = require('../src/model/promotion');
 
-describe('Discount', function () {
+describe('Promotion', function () {
   describe('#getTotalPrice()', function () {
     it('should return the 0', function () {
       var basket = {};
-      var discount = new Discount();
-      var result = discount.getDiscountPrice(basket);
+      var promotion = new Promotion();
+      var result = promotion.getTotalPrice(basket);
       expect(result).toBe(0);
     });
 
@@ -18,9 +18,9 @@ describe('Discount', function () {
           ['partOne', 'partTwo', 'partThree', 'partFive']
         ]
       };
-      var discount = new Discount();
-      var result = discount.getDiscountPrice(basket);
-      expect(result).toBe(12.8);
+      var promotion = new Promotion();
+      var result = promotion.getTotalPrice(basket);
+      expect(result).toBe(51.2);
     });
   })
 });

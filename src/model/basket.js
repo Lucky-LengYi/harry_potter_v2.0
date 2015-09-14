@@ -29,10 +29,40 @@ Basket.prototype.grouping = function () {
 };
 
 Basket.prototype.getBestGrouping = function () {
-  // while (this.group[3].length > 0 && this.group[5].length > 0)
-  //   {
-  //     //TODO: need some function
-  //   }
+  var isExist = this.group[3] !== undefined && this.group[5] !== undefined;
+
+  while (isExist && this.group[3].length > 0 && this.group[5].length > 0)
+    {
+      var groupsThree = this.group[3].shift()
+      var groupsFive = this.group[5].shift()
+
+      var firstGroupFour = _.clone(groupsThree, true);
+      var secondGroupFour = _.clone(groupsThree, true);
+
+      var diff = _.difference(groupsFive, groupsThree);
+
+      firstGroupFour.push(diff.shift());
+      secondGroupFour.push(diff.shift());
+
+      this.group[4] = this.group[4] || [];
+      this.group[4].push(firstGroupFour,secondGroupFour)
+    }
 };
+
+
+/* test
+*/
+var list = {
+  partOne: 4,
+  partTwo: 4,
+  partThree: 4,
+  partFour: 2,
+  partFive: 2
+};
+
+var basket = new Basket(list);
+basket.grouping();
+basket.getBestGrouping();
+
 
 module.exports = Basket;

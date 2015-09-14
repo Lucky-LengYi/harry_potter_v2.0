@@ -81,15 +81,17 @@ describe('Basket', function () {
 
   describe('#getBestGrouping()', function () {
     describe('change the group to best discount group', function () {
-      xit('should return the best discount group', function () {
+      it('should return the best discount group', function () {
         var basket = new Basket(list);
         basket.grouping();
         basket.getBestGrouping();
         expect(basket.group).toEqual({
+          3: [],
           4: [
             ['partOne', 'partTwo', 'partThree', 'partFour'],
             ['partOne', 'partTwo', 'partThree', 'partFive']
-          ]
+          ],
+          5: [],
         });
       });
     });
