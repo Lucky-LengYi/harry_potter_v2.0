@@ -16,6 +16,7 @@ function Promotion() {
 Promotion.prototype.getTotalPrice = function(group) {
   var totalPrice = 0;
   var that = this;
+
   _.each(group, function(val, count) {
     totalPrice += val.length * count * that.price * (1 - that.discount[count]);
   });

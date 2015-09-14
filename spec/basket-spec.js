@@ -9,8 +9,8 @@ var list = {
   partFive: 1
 };
 
-describe('Basket', function () {
-  it('should have one attribute', function () {
+describe('Basket', function() {
+  it('should have one attribute', function() {
     var basket = new Basket(list);
     expect(basket.listing).toEqual({
       partOne: 2,
@@ -21,8 +21,8 @@ describe('Basket', function () {
     });
   });
 
-  describe('#getGrouping()', function () {
-    it('should get the simple group', function () {
+  describe('#getGrouping()', function() {
+    it('should get the simple group', function() {
       var basket = new Basket(list);
       basket.grouping();
       expect(basket.group).toEqual({
@@ -35,7 +35,7 @@ describe('Basket', function () {
       });
     });
 
-    it('should get the simple group', function () {
+    it('should get the simple group', function() {
       var list = {
         partOne: 0,
         partTwo: 0,
@@ -48,7 +48,7 @@ describe('Basket', function () {
       expect(basket.group).toEqual({});
     });
 
-    it('group the book list', function () {
+    it('group the book list', function() {
       var list = {
         partOne: 5,
         partTwo: 4,
@@ -79,9 +79,9 @@ describe('Basket', function () {
   });
 
 
-  describe('#getBestGrouping()', function () {
-    describe('change the group to best discount group', function () {
-      it('should return the best discount group', function () {
+  describe('#getBestGrouping()', function() {
+    describe('change the group to best discount group', function() {
+      it('should return the best discount group', function() {
         var basket = new Basket(list);
         basket.grouping();
         basket.getBestGrouping();

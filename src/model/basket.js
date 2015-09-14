@@ -7,13 +7,13 @@ function Basket(list) {
   this.group = {};
 }
 
-Basket.prototype.grouping = function () {
+Basket.prototype.grouping = function() {
   var result = {};
   var group;
   var list = _.clone(this.listing, true);
   do {
     group = [];
-    _.each(list, function (val, key) {
+    _.each(list, function(val, key) {
       if (val > 0) {
         group.push(key);
         list[key]--;
@@ -28,51 +28,35 @@ Basket.prototype.grouping = function () {
   this.group = result;
 };
 
-Basket.prototype.getBestGrouping = function () {
+Basket.prototype.getBestGrouping = function() {
   var isExist = this.group[3] !== undefined && this.group[5] !== undefined;
 
-  while (isExist && this.group[3].length > 0 && this.group[5].length > 0)
-    {
-      var groupsThree = this.group[3].shift()
-      var groupsFive = this.group[5].shift()
+  while (isExist && this.group[3].length > 0 && this.group[5].length > 0) {
+    var groupsThree = this.group[3].shift()
+    var groupsFive = this.group[5].shift()
 
-      var firstGroupFour = _.clone(groupsThree, true);
-      var secondGroupFour = _.clone(groupsThree, true);
+    var firstGroupFour = _.clone(groupsThree, true);
+    var secondGroupFour = _.clone(groupsThree, true);
 
-      var diff = _.difference(groupsFive, groupsThree);
+    var diff = _.difference(groupsFive, groupsThree);
 
-      firstGroupFour.push(diff.shift());
-      secondGroupFour.push(diff.shift());
+    firstGroupFour.push(diff.shift());
+    secondGroupFour.push(diff.shift());
 
-      this.group[4] = this.group[4] || [];
-      this.group[4].push(firstGroupFour,secondGroupFour)
-    }
+    this.group[4] = this.group[4] || [];
+    this.group[4].push(firstGroupFour, secondGroupFour)
+  }
 
   this.deleteUselessElement();
 };
 
-Basket.prototype.deleteUselessElement = function () {
+Basket.prototype.deleteUselessElement = function() {
   var that = this;
-  _.each(this.group, function (val, key) {
+  _.each(this.group, function(val, key) {
     if (val.length === 0) {
       delete that.group[key]
     }
   });
 };
-
-/* test
-*/
-var list = {
-  partOne: 4,
-  partTwo: 4,
-  partThree: 4,
-  partFour: 2,
-  partFive: 2
-};
-
-var basket = new Basket(list);
-basket.grouping();
-basket.getBestGrouping();
-
 
 module.exports = Basket;
