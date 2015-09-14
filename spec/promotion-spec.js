@@ -22,5 +22,5 @@ describe('Promotion', function() {
       var result = promotion.getTotalPrice(basket);
       expect(result).toBe(51.2);
     });
-  })
+  });
 });

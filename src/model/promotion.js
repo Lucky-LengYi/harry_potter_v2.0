@@ -9,8 +9,8 @@ function Promotion() {
     3: 0.1,
     4: 0.2,
     5: 0.25
-  }
-  this.price = 8
+  };
+  this.price = 8;
 }
 
 Promotion.prototype.getTotalPrice = function(group) {
@@ -22,6 +22,6 @@ Promotion.prototype.getTotalPrice = function(group) {
   });
 
   return totalPrice;
-}
+};
 
 module.exports = Promotion;
