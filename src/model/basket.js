@@ -2,10 +2,18 @@
 
 var _ = require('lodash');
 
-function Basket(list) {
-  this.listing = list;
-  this.group = {};
+function Basket() {
+  this.listing = {};
 }
+
+Basket.prototype.addBook = function (book) {
+  this.listing[book.name] = this.listing[book.name] || [];
+  this.listing[book.name].push(book);
+}
+
+
+
+
 
 Basket.prototype.grouping = function() {
   var list = _.clone(this.listing, true);

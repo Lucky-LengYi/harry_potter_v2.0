@@ -1,6 +1,7 @@
 'use strict';
 
 var Book = require('../src/model/book');
+var fixture = require('../config/fixture');
 
 describe('Book', function() {
   it('should have two attribute', function() {
